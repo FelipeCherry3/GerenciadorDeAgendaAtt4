@@ -10,21 +10,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
+@ToString
 public class Agenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @ManyToOne
     private Curso curso;
 
@@ -35,7 +39,9 @@ public class Agenda {
     private LocalDate dataFim;
     private LocalTime horarioInicio;
     private LocalTime horarioFim;
+    private String resumo;
     private String cidade;
     private String estado;
     private String cep;
+    
 }

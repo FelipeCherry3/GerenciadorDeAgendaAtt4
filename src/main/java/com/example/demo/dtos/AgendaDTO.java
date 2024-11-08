@@ -21,6 +21,6 @@ public class AgendaDTO {
     private String cidade;
     private String estado;
     private String cep;
-    private String nomeProfessor;
-    private String nomeCurso;
+    private ProfessorDTO professor;
+    private CursoDTO curso;
 }
