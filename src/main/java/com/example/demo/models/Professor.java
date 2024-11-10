@@ -27,7 +27,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-
 public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -15,14 +15,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @ToString
-public class AgendaDTO {
-    private Long id;
+public class AgendaProfessorDTO {
     private LocalDate dataInicio;
     private LocalDate dataFim;
     private LocalTime horarioInicio;
@@ -30,6 +29,5 @@ public class AgendaDTO {
     private String cidade;
     private String estado;
     private String cep;
-    private Professor professor;
     private Curso curso;
 }

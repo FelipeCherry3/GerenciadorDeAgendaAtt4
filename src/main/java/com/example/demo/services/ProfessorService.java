@@ -7,6 +7,6 @@ import com.example.demo.dtos.ProfessorDTO;
 
 public interface ProfessorService {
     void adicionar(ProfessorDTO professorDTO);
-    List<ProfessorDTO> professoresPorEspecialidade(CursoDTO curso);
-    void adicionarEspecializaao(CursoDTO cursoDTO);
+    List<ProfessorDTO> professoresPorEspecialidade(Long idCurso);
+    void adicionarEspecializaao(Long idProfessor, Long idCurso);
 }
