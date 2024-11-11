@@ -9,4 +9,5 @@ public interface ProfessorService {
     void adicionar(ProfessorDTO professorDTO);
     List<ProfessorDTO> professoresPorEspecialidade(Long idCurso);
     void adicionarEspecializaao(Long idProfessor, Long idCurso);
+    List<ProfessorDTO> buscarTodosProfessores();
 }

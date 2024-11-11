@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dtos.AgendaDTO;
+import com.example.demo.dtos.CadastrarAgendaDTO;
 import com.example.demo.dtos.ProfessorDTO;
 import com.example.demo.models.Agenda;
+import com.example.demo.models.Curso;
 import com.example.demo.models.Professor;
 import com.example.demo.repository.AgendaRepository;
+import com.example.demo.repository.CursoRepository;
 import com.example.demo.repository.ProfessorRepository;
 
 @Service
@@ -21,8 +24,16 @@ public class AgendaServiceImp implements AgendaService{
 
     @Autowired
     private AgendaRepository agendaRepository;
-    @Override
-    public void cadastrarAgenda(AgendaDTO agendaDTO) {
+
+    @Autowired
+    private CursoRepository cursoRepository;
+
+    public void cadastrarAgenda(CadastrarAgendaDTO agendaDTO) {
+        Professor professor = professorRepository.findById(agendaDTO.getIdProfessor())
+            .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado"));
+
+        Curso curso = cursoRepository.findById(agendaDTO.getIdCurso())
+            .orElseThrow(() -> new IllegalArgumentException("Curso não encontrado"));
         Agenda agenda = Agenda.builder()
             .dataInicio(agendaDTO.getDataInicio())
             .dataFim(agendaDTO.getDataFim())
@@ -31,15 +42,18 @@ public class AgendaServiceImp implements AgendaService{
             .cidade(agendaDTO.getCidade())
             .estado(agendaDTO.getEstado())
             .cep(agendaDTO.getCep())
-            .professor(Professor.builder().id(agendaDTO.getProfessor().getId()).build())
-            .curso(agendaDTO.getCurso())
+            .professor(professor)
+            .curso(curso)
             .build();
+        if(!professorTemAgenda(new AgendaDTO(agenda.getId(), agenda.getDataInicio(), agenda.getDataFim(), agenda.getHorarioInicio(), agenda.getHorarioFim(), agenda.getCidade(), agenda.getEstado(), agenda.getCep(), agenda.getProfessor(), agenda.getCurso()))){
+            throw new IllegalArgumentException("Professor já possui agenda nesse período");
+        }
         agendaRepository.save(agenda);
     }
 
     @Override
-    public List<AgendaDTO> visualizarAgendaDeProfessor(ProfessorDTO professorDTO) {
-        Professor professor = professorRepository.findById(professorDTO.getId())
+    public List<AgendaDTO> visualizarAgendaDeProfessor(Long idProf) {
+        Professor professor = professorRepository.findById(idProf)
             .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado"));
 
         List<Agenda> agendas = agendaRepository.findByProfessorId(professor.getId());
@@ -59,8 +73,8 @@ public class AgendaServiceImp implements AgendaService{
     }
 
     @Override
-    public void adicionarResumo(AgendaDTO agenda, String resumo) {
-        Agenda agendaModel = agendaRepository.findById(agenda.getId())
+    public void adicionarResumo(Long idAgenda, String resumo) {
+        Agenda agendaModel = agendaRepository.findById(idAgenda)
             .orElseThrow(() -> new IllegalArgumentException("Agenda não encontrada"));
         agendaModel.setResumo(resumo);
         agendaRepository.save(agendaModel);
@@ -105,6 +119,13 @@ public class AgendaServiceImp implements AgendaService{
             agenda.getCep(),
             agenda.getProfessor(),
             agenda.getCurso())).collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean professorTemAgenda(AgendaDTO agendaDTO) {
+
+        List<Agenda> agendas = agendaRepository.findByProfessorIdAndDataInicioLessThanEqualAndDataFimGreaterThanEqual(agendaDTO.getProfessor().getId(), agendaDTO.getDataInicio(),agendaDTO.getDataFim());
+        return agendas.isEmpty();
     }
     
 }

@@ -1,15 +1,11 @@
-package com.example.demo.models;
+package com.example.demo.dtos;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.demo.models.Curso;
+import com.example.demo.models.Professor;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,34 +14,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Getter
 @Setter
-@Builder
 @ToString
-public class Agenda {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CadastrarAgendaDTO {
     private Long id;
-
-    @ManyToOne
-    @JsonIgnore
-    private Curso curso;
-
-    @ManyToOne
-    @JsonIgnore
-    private Professor professor;
-
     private LocalDate dataInicio;
     private LocalDate dataFim;
     private LocalTime horarioInicio;
     private LocalTime horarioFim;
-    private String resumo;
     private String cidade;
     private String estado;
     private String cep;
-    
+    private Long idProfessor;
+    private Long idCurso;
 }

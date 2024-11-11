@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,9 +30,9 @@ public class ProfessorServiceImp implements ProfessorService {
             .nome(professorDTO.getNome())
             .cpf(professorDTO.getCpf())
             .rg(professorDTO.getRg())
-            .especializacoes(new HashSet<>(professorDTO.getEspecializacoes().stream()
-                .map(cursoDTO -> new Curso(cursoDTO.getId(), cursoDTO.getDescricao(), cursoDTO.getCargaHoraria(), cursoDTO.getObjetivos(),cursoDTO.getEmenta(), null))
-                .collect(Collectors.toSet())))
+            .endereco(professorDTO.getEndereco())
+            .celular(professorDTO.getCelular())
+            .especializacoes(new ArrayList<>())
             .build();
         professorRepository.save(professor);
     }
@@ -68,6 +69,28 @@ public class ProfessorServiceImp implements ProfessorService {
             .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado"));
         professor.getEspecializacoes().add(curso);
         professorRepository.save(professor);
+    }
+
+    @Override
+    public List<ProfessorDTO> buscarTodosProfessores() {
+        List<Professor> professores = professorRepository.findAll();
+        return professores.stream()
+            .map(professor -> new ProfessorDTO(
+                professor.getId(),
+                professor.getNome(),
+                professor.getCpf(),
+                professor.getRg(),
+                professor.getEndereco(),
+                professor.getCelular(),
+                professor.getEspecializacoes().stream()
+                    .map(curso -> new CursoDTO(
+                        curso.getId(),
+                        curso.getDescricao(),
+                        curso.getCargaHoraria(),
+                        curso.getObjetivos(),
+                        curso.getEmenta()))
+                    .collect(Collectors.toList()))
+            ).collect(Collectors.toList());
     }
     
 }

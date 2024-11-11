@@ -10,6 +10,5 @@ import com.example.demo.models.Professor;
 
 public interface ProfessorRepository extends JpaRepository<Professor, Long> {
     List<Professor> findByEspecializacoes(Curso curso);
-    boolean existsByIdAndAgendaDataInicioLessThanEqualAndAgendaDataFimGreaterThanEqual(Long professorId, LocalDate dataInicio, LocalDate dataFim);
     Professor findByRg(String rgProfessor);
 }

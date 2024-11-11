@@ -1,7 +1,11 @@
 package com.example.demo.models;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
@@ -35,6 +39,22 @@ public class Curso {
     private String ementa;
 
     @ManyToMany(mappedBy = "especializacoes")
-    private Set<Professor> professores = new HashSet<>();
+    @JsonIgnore
+    private List<Professor> professores = new ArrayList<>();
+
+    public Curso(String descricao, int cargaHoraria, String objetivos, String ementa) {
+        this.descricao = descricao;
+        this.cargaHoraria = cargaHoraria;
+        this.objetivos = objetivos;
+        this.ementa = ementa;
+    }
+
+    public Curso(Long id, String descricao, int cargaHoraria, String objetivos, String ementa) {
+        this.id = id;
+        this.descricao = descricao;
+        this.cargaHoraria = cargaHoraria;
+        this.objetivos = objetivos;
+        this.ementa = ementa;
+    }
     
 }

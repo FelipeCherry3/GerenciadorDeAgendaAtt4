@@ -41,7 +41,9 @@ public class CursoServiceImp  implements CursoService{
         .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado"));
 
         curso.getProfessores().add(professor);
+        professor.getEspecializacoes().add(curso);
         cursoRepository.save(curso);
+        professorRepository.save(professor);
     }
 
     @Override
