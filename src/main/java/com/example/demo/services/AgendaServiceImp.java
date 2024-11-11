@@ -45,7 +45,7 @@ public class AgendaServiceImp implements AgendaService{
             .professor(professor)
             .curso(curso)
             .build();
-        if(!professorTemAgenda(new AgendaDTO(agenda.getId(), agenda.getDataInicio(), agenda.getDataFim(), agenda.getHorarioInicio(), agenda.getHorarioFim(), agenda.getCidade(), agenda.getEstado(), agenda.getCep(), agenda.getProfessor(), agenda.getCurso()))){
+        if(!professorTemAgenda(new AgendaDTO(agenda.getId(), agenda.getDataInicio(), agenda.getDataFim(), agenda.getHorarioInicio(), agenda.getHorarioFim(), agenda.getCidade(), agenda.getEstado(), agenda.getCep(), agenda.getProfessor(), agenda.getCurso(), agenda.getResumo()))){
             throw new IllegalArgumentException("Professor já possui agenda nesse período");
         }
         agendaRepository.save(agenda);
@@ -68,7 +68,8 @@ public class AgendaServiceImp implements AgendaService{
                         agenda.getEstado(),
                         agenda.getCep(),
                         agenda.getProfessor(),
-                        agenda.getCurso()))
+                        agenda.getCurso(),
+                        agenda.getResumo()))
                 .collect(Collectors.toList());
     }
 
@@ -94,7 +95,8 @@ public class AgendaServiceImp implements AgendaService{
             agenda.getEstado(),
             agenda.getCep(),
             agenda.getProfessor(),
-            agenda.getCurso());
+            agenda.getCurso(),
+            agenda.getResumo());
     }
 
     @Override
@@ -118,7 +120,8 @@ public class AgendaServiceImp implements AgendaService{
             agenda.getEstado(),
             agenda.getCep(),
             agenda.getProfessor(),
-            agenda.getCurso())).collect(Collectors.toList());
+            agenda.getCurso(),
+            agenda.getResumo())).collect(Collectors.toList());
     }
 
     @Override

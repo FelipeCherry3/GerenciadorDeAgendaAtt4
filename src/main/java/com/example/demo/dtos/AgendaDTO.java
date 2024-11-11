@@ -32,4 +32,5 @@ public class AgendaDTO {
     private String cep;
     private Professor professor;
     private Curso curso;
+    private String resumo;
 }

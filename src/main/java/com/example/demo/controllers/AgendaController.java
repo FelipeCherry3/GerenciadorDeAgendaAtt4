@@ -36,7 +36,7 @@ public class AgendaController {
     }
 
     @PostMapping("/adicionarResumo")
-    public String adicionarResumo(@RequestBody Long idAgenda, @RequestBody String resumo) {
+    public String adicionarResumo(@RequestParam Long idAgenda, @RequestParam String resumo) {
         agendaService.adicionarResumo(idAgenda, resumo);
         return "Resumo Adicionado";
     }
