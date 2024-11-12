@@ -1,0 +1,208 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "TestesAtt4",
+    "collectionId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+    "dateExported": "2024-11-12T18:57:20.683Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f4d9a647-a3b8-4aea-81a9-0e5a6d8fcb98",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "Adicionar Resumo",
+            "url": "http://localhost:8080/agenda/adicionarResumo?idAgenda=1&resumo=Este%20e%20um%20resumo",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-11-12T18:56:11.276Z",
+            "modified": "2024-11-12T18:56:11.276Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "idAgenda",
+                    "value": "1",
+                    "isPath": false
+                },
+                {
+                    "name": "resumo",
+                    "value": "Este%20e%20um%20resumo",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "1589b4a2-89f9-4f4c-9e36-1f970d60d18a",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "Cadastrar Curso",
+            "url": "http://localhost:8080/curso/cadastrar",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-11-12T18:56:17.135Z",
+            "modified": "2024-11-12T18:56:17.135Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"descricao\": \"Curso de Fisioterapia Avançada\",\n  \"cargaHoraria\": 40,\n  \"objetivos\": \"Aprender técnicas avançadas de fisioterapia\",\n  \"ementa\": \"Ementa detalhada do curso\"\n}\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "c9ad6d53-3654-40cc-ad83-9f16aef1bb9d",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "Adicionar Professor Ao Curso",
+            "url": "http://localhost:8080/curso/adicionarProfessor?idCurso=4&idProfessor=1",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-11-12T18:56:24.919Z",
+            "modified": "2024-11-12T18:56:24.919Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "idCurso",
+                    "value": "4",
+                    "isPath": false
+                },
+                {
+                    "name": "idProfessor",
+                    "value": "1",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "794d5d62-9185-41e0-ab95-89de90fc0e72",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "Buscar Professor Por Especialidade",
+            "url": "http://localhost:8080/professor/especialidade?idCurso=4",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-11-12T18:56:30.895Z",
+            "modified": "2024-11-12T18:56:30.895Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "idCurso",
+                    "value": "4",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "b4bcfda5-aea2-4301-8a89-d287a99b1502",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "Visualizar Cursos",
+            "url": "http://localhost:8080/curso/all",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-11-12T18:56:36.031Z",
+            "modified": "2024-11-12T18:56:36.031Z",
+            "headers": []
+        },
+        {
+            "_id": "efd224f0-eb40-463c-996c-16489071d8e3",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "Adicionar Especialização Professor",
+            "url": "http://localhost:8080/professor/adicionarEspecializacao?idProfessor=3&idCurso=2",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-11-12T18:56:42.015Z",
+            "modified": "2024-11-12T18:56:42.015Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "idProfessor",
+                    "value": "3",
+                    "isPath": false
+                },
+                {
+                    "name": "idCurso",
+                    "value": "2",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "c0794b7c-ca67-4578-9f2f-7a8310a261fb",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "Visualizar Professores",
+            "url": "http://localhost:8080/professor/all",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-11-12T18:56:47.263Z",
+            "modified": "2024-11-12T18:56:47.263Z",
+            "headers": []
+        },
+        {
+            "_id": "4518277e-92ff-4561-9e0f-82b13830a07d",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "Cadastrar Professor",
+            "url": "http://localhost:8080/professor/cadastrar",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-11-12T18:56:53.546Z",
+            "modified": "2024-11-12T18:56:53.546Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"nome\": \"João Silva\",\r\n  \"cpf\": \"12345678900\",\r\n  \"rg\": \"MG1234567\",\r\n  \"endereco\": \"Rua das Flores, 123\",\r\n  \"celular\": \"31987654321\"\r\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "b3a9c67e-f502-4ae2-a343-d66e477c23dd",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "Visualizar Agenda Professor",
+            "url": "http://localhost:8080/agenda/visualizarProfessor?idProf=1",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-11-12T18:57:00.834Z",
+            "modified": "2024-11-12T18:57:00.834Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "idProf",
+                    "value": "1",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "0197a300-c65d-43c0-b851-c3a5782b9097",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "Visualizar Agenda Secretária",
+            "url": "http://localhost:8080/agenda/visualizar",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-11-12T18:57:05.050Z",
+            "modified": "2024-11-12T18:57:05.050Z",
+            "headers": []
+        },
+        {
+            "_id": "11f0b168-5702-4e0c-b7d6-c6dc08a5c5c3",
+            "colId": "dfe5b290-01e3-4e9c-a6ff-f879712e92da",
+            "containerId": "",
+            "name": "cadastrarAgenda",
+            "url": "http://localhost:8080/agenda/cadastrar",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-11-12T18:57:10.666Z",
+            "modified": "2024-11-12T18:57:10.666Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"idCurso\": 1,\r\n  \"idProfessor\": 1,\r\n  \"dataInicio\": \"2030-03-17\",\r\n  \"dataFim\": \"2030-03-20\",\r\n  \"horarioInicio\": \"08:00\",\r\n  \"horarioFim\": \"17:00\",\r\n  \"cidade\": \"Marília\",\r\n  \"estado\": \"SP\",\r\n  \"cep\": \"123321\"\r\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "yIPWwRHxAW3fdc2tVHfjPDnL0GVljcnwIzNzo-O-SP6H24cc82G-y_KSIX3bTewoOC8uvI_eodu1na6zB8DNVQ"
+}
